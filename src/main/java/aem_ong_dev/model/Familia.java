@@ -14,7 +14,7 @@ public class Familia {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String nomeCompleto;
+    private String nomeResponsavel;
     private String cpf;
     private LocalDate dataNascimento;
     private String endereco;
