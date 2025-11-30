@@ -2,13 +2,12 @@ package aem_ong_dev.controller;
 
 import org.springframework.stereotype.Controller;
 
+import aem_ong_dev.model.User.User;
 import aem_ong_dev.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import aem_ong_dev.model.User;
 
 import java.util.List;
 import org.springframework.web.bind.annotation.PutMapping;

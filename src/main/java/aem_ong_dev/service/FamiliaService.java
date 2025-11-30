@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import aem_ong_dev.model.Familia;
-import aem_ong_dev.model.User;
+import aem_ong_dev.model.User.User;
 import aem_ong_dev.repository.FamiliaRepository;
 import aem_ong_dev.repository.UserRepository;
 

@@ -5,6 +5,8 @@ import lombok.Data;
 import java.time.LocalDate;
 import java.util.List;
 
+import aem_ong_dev.model.User.User;
+
 @Entity
 @Table(name = "tb_eventos")
 @Data

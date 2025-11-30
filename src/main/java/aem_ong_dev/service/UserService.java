@@ -3,7 +3,10 @@ package aem_ong_dev.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import aem_ong_dev.model.User;
+import aem_ong_dev.model.Familia;
+import aem_ong_dev.model.User.StatusUser;
+import aem_ong_dev.model.User.User;
+import aem_ong_dev.repository.FamiliaRepository;
 import aem_ong_dev.repository.UserRepository;
 
 import java.util.List;
@@ -11,12 +14,13 @@ import java.util.Optional;
 
 @Service
 public class UserService {
-
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    private FamiliaRepository familiaRepository;
 
     public List<User> listarTodos() {
-        return userRepository.findAll();
+        return userRepository.findByStatus(StatusUser.ATIVO);
     }
 
     public User salvar(User user) {
@@ -27,10 +31,14 @@ public class UserService {
     }
 
     public Optional<User> buscarPorId(Long id) {
-        return userRepository.findById(id);
+        return userRepository.findByIdAndStatus(id, StatusUser.ATIVO);
     }
 
     public void deletar(Long id) {
+        User usuario = userRepository.findById(id)
+            .orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
+
+        usuario.setStatus(StatusUser.INATIVO);
         userRepository.deleteById(id);
     }
     
