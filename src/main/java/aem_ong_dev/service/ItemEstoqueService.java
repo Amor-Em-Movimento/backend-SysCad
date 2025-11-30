@@ -1,6 +1,7 @@
 package aem_ong_dev.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -34,5 +35,16 @@ public class ItemEstoqueService {
             item.setQuantidadeAtual(item.getQuantidadeAtual() - quantidade);
         }
         return estoqueRepository.save(item);
+    }
+
+    public Optional<ItemEstoque> buscarPorId(Long id) {
+        return estoqueRepository.findById(id);
+    }
+
+    public void deletar(Long id) {
+        if(!estoqueRepository.existsById(id)){
+            throw new RuntimeException("Item não encontrado");
+        }
+        estoqueRepository.deleteById(id);
     }
 }

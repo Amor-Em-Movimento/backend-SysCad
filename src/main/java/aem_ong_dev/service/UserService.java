@@ -3,7 +3,6 @@ package aem_ong_dev.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import aem_ong_dev.model.Familia;
 import aem_ong_dev.model.User.StatusUser;
 import aem_ong_dev.model.User.User;
 import aem_ong_dev.repository.FamiliaRepository;
@@ -39,7 +38,7 @@ public class UserService {
             .orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
 
         usuario.setStatus(StatusUser.INATIVO);
-        userRepository.deleteById(id);
+        userRepository.save(usuario);
     }
     
     public boolean validarSenha(String email, String senha) {
